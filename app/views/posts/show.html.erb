@@ -1,0 +1,13 @@
+
+<div>
+<%= @post.body  %>
+</div>
+<div>
+<% @post.comments.each do |comment| %>
+<p><%= link_to comment.body , comment_path(comment) %></p>
+<% end %>
+</div>
+<div>
+<%= link_to 'Delete Post', post_path(@post), method: :delete %>
+</div>
+<%= render partial: 'comments/form' %>

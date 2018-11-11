@@ -1,0 +1,8 @@
+<h3>All Post</h3>
+
+<% @posts.each do |post| %>
+<div>
+<%= post.body %>
+By <%= post.user.email %>
+</div>
+<% end %>

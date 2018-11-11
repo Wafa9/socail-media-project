@@ -1,0 +1,12 @@
+<div>
+<h3><%= @user.name %> </h3>
+</div>
+
+
+<div>
+<h3><%  @user.posts.each do |post| %> </h3>
+<div>
+<%= link_to post.body ,post_path(post) %>
+</div>
+<% end %>
+<div>
