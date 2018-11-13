@@ -4,7 +4,7 @@
       <%= link_to user_path(post.user) do %>
         <li class="collection-item avatar">
           <% if post.user.image.url %>
-            <i class="material-icons circle indigo lighten-3"><%= cl_image_tag post.user.image %></i>
+            <img class= "circle responsive-img" src=" <%= cl_image_tag post.user.image %>>
           <% else %>
             <i class="material-icons circle indigo lighten-3">person</i>
           <% end %>
@@ -14,7 +14,7 @@
           <p class="grey-text">
             <%= link_to post.body,"#modal#{post.id}", class: "modal-trigger" %>
           </p>
-          <%= cl_image_tag post.image%>
+          <img class="responsive-img" src="<%= cl_image_tag post.image%>">
         </li>
       <% end %>
       <div id="modal<%= post.id %>" class="modal">
