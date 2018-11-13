@@ -12,5 +12,24 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
+
+// function materialize() {
+//   $(".dropdown-trigger").dropdown();
+//   $(".sidenav").sidenav();
+// }
+
+// $(document).ready(materialize);
+
+$(document).ready(function() {
+  materialize();
+
+  console.log("THIS RAN");
+
+  function materialize() {
+    $(".dropdown-trigger").dropdown();
+    $(".sidenav").sidenav();
+  }
+  $(".modal").modal();
+  $(".fixed-action-btn").floatingActionButton();
+});

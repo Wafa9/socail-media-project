@@ -4,31 +4,68 @@
     <title>SocialApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   </head>
-
   <body>
-  <% if user_signed_in? %>
-        <%= link_to "New Post", new_post_path %>
-        <%= link_to "View Profile", user_path(current_user) %>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "Log in", new_user_session_path %>
-        <%= link_to "Sign Up", new_user_registration_path %>
-      <% end %>
+    <nav class="indigo lighten-5">
+      <div class="container nav-wrapper">
+        <a href="#" class="brand-logo">Name of site</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <% if user_signed_in? %>
+            <li> <%= link_to "Home" , root_path %></li>
+            <li class="collection-item avatar">
+              <a href="<%=  user_path(current_user) %>">
+                <% if current_user.image.url %>
+                  <i class="material-icons circle indigo lighten-3 nav-profile sidebar-circle"><%= cl_image_tag current_user.image %></i>
+                <% else %>
+                  <i class="material-icons circle indigo lighten-3 nav-profile">person</i>
+                <% end %>
+              </a>
+            </li>
+            <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li> <%= link_to "Home" , root_path %></li>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
     </nav>
-
+    <ul class="sidenav" id="mobile-demo">
+      <% if user_signed_in? %>
+        <li> <%= link_to "Home" , root_path %></li>
+        <a href="<%=  user_path(current_user) %>">
+          <li class="collection-item avatar">
+            <% if current_user.image.url %>
+              <i class="material-icons circle indigo lighten-3 nav-profile sidebar-circle"><%= cl_image_tag current_user.image %></i>
+            <% else %>
+              <i class="material-icons circle indigo lighten-3 nav-profile-mobile">person</i>
+            <% end %>
+          </a>
+        </li>
+        <br>
+        <li>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li> <%= link_to "Home" , root_path %></li>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+      <% end %>
+    </ul>
     <% if user_signed_in? %>
       <p>
         You are logged in as: 
         <%= current_user.email %>
       </p>
     <% end %>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

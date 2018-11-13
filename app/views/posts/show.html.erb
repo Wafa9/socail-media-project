@@ -1,17 +1,14 @@
-<body>
 <div class="container">
-<div >
-<%= @post.body  %>
+  <%= render partial: 'comments', locals: { post: @post } %>
+  <div>
+    <% if current_user.id == @post.user.id %>
+      <%= link_to 'Delete Post', post_path(@post), method: :delete %>
+    <% end %>
+  </div>
+  <%= render partial: 'comments/form' %>
+  <% if user_signed_in? %>
+    <div class="btn-floating indigo lighten-2 pulse right ">
+      <i class="material-icons circle">add</i>
+    </div>
+  <% end %>
 </div>
-<div>
-<% @post.comments.each do |comment| %>
-<p><%= link_to comment.body , comment_path(comment) %></p>
-<% end %>
-</div>
-
-<div>
-<%= link_to 'Delete Post', post_path(@post), method: :delete %>
-</div>
-<%= render partial: 'comments/form' %>
-</div>
-</body>

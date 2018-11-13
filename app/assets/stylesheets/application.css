@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+.nav-profile {
+  width: 64px;
+  text-align: center;
+}
+
+.sidenav li > a > i.material-icons {
+  width: 64px;
+  height: 64px;
+}

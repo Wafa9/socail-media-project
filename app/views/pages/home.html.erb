@@ -1,7 +1,40 @@
-<body>
-<div class="container"> 
-<% @posts.each do |post| %>
-<%= link_to post.body,post_path(post) %><br>
-<% end %>
+<div class="container">
+  <ul class="collection">
+    <% @posts.each do |post| %>
+      <%= link_to user_path(post.user) do %>
+        <li class="collection-item avatar">
+          <% if post.user.image.url %>
+            <i class="material-icons circle indigo lighten-3"><%= cl_image_tag post.user.image %></i>
+          <% else %>
+            <i class="material-icons circle indigo lighten-3">person</i>
+          <% end %>
+          <span class="title">
+            <%= post.user.username %>
+          </span>
+          <p class="grey-text">
+            <%= link_to post.body,"#modal#{post.id}", class: "modal-trigger" %>
+          </p>
+          <%= cl_image_tag post.image%>
+        </li>
+      <% end %>
+      <div id="modal<%= post.id %>" class="modal">
+        <div class="modal-content">
+          <%= render partial: "posts/comments", locals: { post: post } %>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+      </div>
+    <% end %>
+  </ul>
 </div>
-</body>
+<% if user_signed_in? %>
+  <div class="container" >
+    <a href="#modal-addpost" class="btn-floating indigo lighten-2 pulse right modal-trigger">
+      <i class="material-icons circle">add </i>
+    </a>
+    <div class="modal" id="modal-addpost">
+      <h3>What's new!!</3>
+      <%= render partial: "posts/form" %>
+    </div>
+  <% end %>

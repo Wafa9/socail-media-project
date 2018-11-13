@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 
-  def index
-    @posts = Post.all
-  end
+  # def index
+  #   @posts = Post.all
+  # end
 
   def new
     @post = Post.new
@@ -22,12 +22,12 @@ class PostsController < ApplicationController
   def destroy
     post = Post.find_by(id: params[:id])
     post.destroy
-    redirect_to posts_path
+    redirect_to root_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, :image)
   end
 end
