@@ -22,7 +22,7 @@
             <li class="collection-item avatar">
               <a href="<%=  user_path(current_user) %>">
                 <% if current_user.image.url %>
-                  <img class= "circle responsive-img" src=" <%= cl_image_tag post.user.image %>" >
+                  <%= cl_image_tag current_user.image, class: "circle responsive-img"  %>
                 <% else %>
                   <i class="material-icons circle indigo lighten-3 nav-profile">person</i>
                 <% end %>
@@ -43,7 +43,7 @@
         <a href="<%=  user_path(current_user) %>">
           <li class="collection-item avatar">
             <% if current_user.image.url %>
-              <img class= "circle responsive-img" src=" <%= cl_image_tag post.user.image %>">
+              <%= cl_image_tag current_user.image, class: "circle responsive-img"  %>
             <% else %>
               <i class="material-icons circle indigo lighten-3 nav-profile-mobile">person</i>
             <% end %>

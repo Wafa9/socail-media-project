@@ -4,7 +4,7 @@
       <%= link_to user_path(post.user) do %>
         <li class="collection-item avatar">
           <% if post.user.image.url %>
-            <img class= "circle responsive-img" src=" <%= cl_image_tag post.user.image %>>
+            <%= cl_image_tag post.user.image, class: "circle responsive-img" %>
           <% else %>
             <i class="material-icons circle indigo lighten-3">person</i>
           <% end %>
@@ -14,7 +14,7 @@
           <p class="grey-text">
             <%= link_to post.body,"#modal#{post.id}", class: "modal-trigger" %>
           </p>
-          <img class="responsive-img" src="<%= cl_image_tag post.image%>">
+          <%= cl_image_tag post.image, class: "responsive-img" %>
         </li>
       <% end %>
       <div id="modal<%= post.id %>" class="modal">
@@ -22,7 +22,7 @@
           <%= render partial: "posts/comments", locals: { post: post } %>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">ok</a>
         </div>
       </div>
     <% end %>
