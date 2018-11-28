@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  # This is to create a new post
   def create
     post = current_user.posts.create(post_params)
     redirect_to post_path(post)

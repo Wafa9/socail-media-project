@@ -1,11 +1,9 @@
-<body>
 <div class="container">
-<%= form_for @comment do |f| %>
+  <%= form_for @comment do |f| %>
     <div>
-        <%= f.text_area :body, required: true   %>
+      <%= f.text_area :body, required: true   %>
     </div>
     <%= hidden_field_tag "comment[post_id]", params[:id] %>
     <%= f.submit %>
-<%end %>
+  <%end %>
 </div>
-</body>

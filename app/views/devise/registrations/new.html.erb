@@ -1,43 +1,40 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-<div>
-<%= f.label "Image" %>
-<%= f.file_field :image %>
+<div class="container " id="regiesterview">
+  <img src="https://images.pexels.com/photos/5980/food-sunset-love-field.jpg?auto=compress&cs=tinysrgb&dpr=2&h=350">
 </div>
-
-<div class="field">
-  <%= f.label :name %><br />
-  <%= f.text_field :name, autocomplete: "name" %>
+<div class=" container" id="regiesterconent">
+  <h2>Sign up</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    <div>
+      <%= f.label "Image" %>
+      <%= f.file_field :image %>
+    </div>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autocomplete: "name" %>
+    </div>
+    <div class="field">
+      <%= f.label :username %><br />
+      <%= f.text_field :username, autocomplete: "username" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+  <%= render "devise/shared/links" %>
 </div>
-
-<div class="field">
-  <%= f.label :username %><br />
-  <%= f.text_field :username, autocomplete: "username" %>
-</div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>

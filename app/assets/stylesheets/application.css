@@ -23,3 +23,21 @@
   width: 64px;
   height: 64px;
 }
+
+#add-but {
+  position: fixed;
+  top: 85%;
+  right: 2%;
+}
+
+#regiesterview {
+  height: 100px;
+  width: 100px;
+}
+#regiesterconent {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  top: 2%;
+  right: 2%;
+}

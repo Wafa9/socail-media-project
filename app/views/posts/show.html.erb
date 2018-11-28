@@ -7,8 +7,13 @@
   </div>
   <%= render partial: 'comments/form' %>
   <% if user_signed_in? %>
-    <div class="btn-floating indigo lighten-2 pulse right ">
-      <i class="material-icons circle">add</i>
-    </div>
-  <% end %>
-</div>
+    <div class="container"  id="add-but">
+      <a href="#modal-addpost" class="btn-floating indigo lighten-2 pulse right modal-trigger">
+        <i class="material-icons circle">add </i>
+      </a>
+      <div class="modal" id="modal-addpost">
+        <h3>What's new!!</3>
+        <%= render partial: "posts/form" %>
+      </div>
+    <% end %>
+  </div>

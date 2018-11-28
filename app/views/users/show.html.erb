@@ -3,7 +3,9 @@
     <%  @user.posts.each do |post| %>
       <li class="collection-item avatar">
         <% if post.user.image.url %>
-          <i class="material-icons circle indigo lighten-3"><%= cl_image_tag post.user.image %></i>
+          <i class="material-icons circle indigo lighten-3">
+            <%= cl_image_tag post.user.image , class: "circle responsive-img"  , :size => "50x50"  %>
+          </i>
         <% else %>
           <i class="material-icons circle indigo lighten-3">person</i>
         <% end %>
@@ -13,7 +15,7 @@
         <p class="grey-text">
           <%= link_to post.body ,post_path(post) %>
         </p>
-        <%= cl_image_tag post.image%>
+        <%= cl_image_tag post.image %>
       </li>
     <% end %>
   </ul>
